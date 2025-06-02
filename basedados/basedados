@@ -1,0 +1,28 @@
+<?php
+// Configurações de conexão com a base de dados
+$host = "localhost";      // Endereço do servidor MySQL (geralmente "localhost")
+$user = "root";           // Nome de utilizador do MySQL (geralmente "root")
+$password = "";           // Palavra-passe do MySQL (deixe vazio se não houver senha)
+$database = "felixbus_db"; // Nome da base de dados
+
+// Função para conectar à base de dados
+function conectarBD() {
+    global $host, $user, $password, $database;
+
+    // Criar uma conexão com o MySQL
+    $conn = new mysqli($host, $user, $password, $database);
+
+    // Verificar se houve erro na conexão
+    if ($conn->connect_error) {
+        die("Erro de conexão: " . $conn->connect_error);
+    }
+
+    // Retornar o objeto de conexão
+    return $conn;
+}
+
+// Função para fechar a conexão com a base de dados
+function fecharBD($conn) {
+    $conn->close();
+}
+?>
